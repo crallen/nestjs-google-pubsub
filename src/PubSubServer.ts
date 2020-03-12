@@ -1,7 +1,7 @@
 import { Message, PubSub, Subscription } from '@google-cloud/pubsub';
 import { Logger } from '@nestjs/common';
 import { CustomTransportStrategy, Server } from '@nestjs/microservices';
-import { PubSubServerOptions } from './PubSubServerOptions';
+import { PubSubServerOptions, SubscriptionOptions } from './PubSubServerOptions';
 import { isError } from 'lodash';
 
 type MessageHandler = (message: Message) => Promise<void>;
@@ -42,13 +42,13 @@ export class PubSubServer extends Server implements CustomTransportStrategy {
   }
 
   private async subscribe(topicId: string): Promise<void> {
-    const subId = this.options.topics[topicId];
-    if (!subId) {
+    const subOptions = this.options.topics[topicId];
+    if (!subOptions) {
       this.logger.error(`No subscription ID defined for topic ${topicId}`);
       return;
     }
 
-    const sub = await this.getSubscription(topicId, subId);
+    const sub = await this.getSubscription(topicId, subOptions);
     const handler = this.getMessageHandler(topicId);
 
     sub.on('message', handler.bind(this));
@@ -69,10 +69,10 @@ export class PubSubServer extends Server implements CustomTransportStrategy {
     };
   }
 
-  private async getSubscription(topicId: string, subId: string): Promise<Subscription> {
+  private async getSubscription(topicId: string, options: SubscriptionOptions): Promise<Subscription> {
     const topic = this.client.topic(topicId);
 
-    let sub = topic.subscription(subId);
+    let sub = topic.subscription(options.subscriptionId);
     [sub] = await sub.get({ autoCreate: true });
 
     return sub;
