@@ -35,5 +35,12 @@
     "prettier": "^1.19.1",
     "rimraf": "^3.0.2",
     "typescript": "^3.8.3"
-  }
+  },
+  "keywords": [
+    "nestjs",
+    "nestjs pubsub",
+    "nestjs google pubsub",
+    "google pubsub",
+    "pubsub"
+  ]
 }
