@@ -1,0 +1,29 @@
+{
+  "name": "nestjs-google-pubsub",
+  "version": "0.1.0",
+  "main": "dist/index.js",
+  "license": "MIT",
+  "scripts": {
+    "build": "tsc"
+  },
+  "dependencies": {
+    "@google-cloud/pubsub": "^1.6.0",
+    "@nestjs/common": "^6.11.11",
+    "@nestjs/core": "^6.11.11",
+    "@nestjs/microservices": "^6.11.11",
+    "lodash": "^4.17.15",
+    "reflect-metadata": "^0.1.13",
+    "rxjs": "^6.5.4"
+  },
+  "devDependencies": {
+    "@types/lodash": "^4.14.149",
+    "@types/node": "^13.9.0",
+    "@typescript-eslint/eslint-plugin": "^2.23.0",
+    "@typescript-eslint/parser": "^2.23.0",
+    "eslint": "^6.8.0",
+    "eslint-config-prettier": "^6.10.0",
+    "eslint-plugin-prettier": "^3.1.2",
+    "prettier": "^1.19.1",
+    "typescript": "^3.8.3"
+  }
+}
