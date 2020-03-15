@@ -6,6 +6,8 @@ import { isError } from 'lodash';
 
 type MessageHandler = (message: Message) => Promise<void>;
 
+export { Message };
+
 export class PubSubServer extends Server implements CustomTransportStrategy {
   public readonly logger = new Logger(PubSubServer.name);
   private readonly subscriptions: { [topicId: string]: Subscription } = {};

@@ -1,2 +1,2 @@
-export { PubSubServer } from './PubSubServer';
+export { PubSubServer, Message } from './PubSubServer';
 export * from './PubSubServerOptions';
