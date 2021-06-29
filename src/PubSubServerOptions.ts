@@ -21,4 +21,5 @@ export interface PubSubTopicMapping {
 
 export interface SubscriptionOptions {
   subscriptionId: string;
+  maxMessages: number;
 }

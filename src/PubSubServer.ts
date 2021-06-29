@@ -74,7 +74,7 @@ export class PubSubServer extends Server implements CustomTransportStrategy {
   private async getSubscription(topicId: string, options: SubscriptionOptions): Promise<Subscription> {
     const topic = this.client.topic(topicId);
 
-    let sub = topic.subscription(options.subscriptionId);
+    let sub = topic.subscription(options.subscriptionId, { flowControl: { maxMessages: options.maxMessages } });
     [sub] = await sub.get({ autoCreate: true });
 
     return sub;
